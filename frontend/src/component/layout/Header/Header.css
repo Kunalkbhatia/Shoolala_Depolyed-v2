@@ -1,0 +1,117 @@
+.header-section {
+  border-bottom: 1px solid rgb(231, 231, 231);
+  height: 6vmax;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  z-index: 1;
+  padding: 3vmax;
+}
+
+
+.right-section {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5vmax;
+  width: 100%;
+}
+
+.logo {
+  cursor: pointer;
+  width: 8vmax;
+  height: 5vmax;
+  object-fit: cover;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vmax;
+}
+
+.linkStyle {
+  text-decoration: none;
+  color: gray;
+  font: 300 1.5vmax "Roboto";
+}
+
+.linkStyle:hover {
+  color: rgb(241, 109 , 18);
+  text-decoration: none;
+}
+
+
+
+.speedDial {
+  position: fixed;
+  right: 2vmax;
+  top: 1.2vmax; 
+}
+
+.speedDialIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  border: 2px solid rgb(241, 109 , 18);
+  object-fit: cover;
+}
+
+.ham,#ham{
+  display: none;
+}
+
+
+
+
+@media  screen and (max-width: 600px) {
+  .speedDial {
+    right: 1.5vmax;
+    top: 10vmax; 
+  }
+
+  .logo {
+    width: 8vmax;
+    height: 8vmax;
+    margin-right: 1vmax;
+  }
+
+  .linkStyle {
+    font: 300 3vmax "Roboto";
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .header-section {
+    height: 10vmax;
+    padding: 1vmax;
+  }
+
+  .ham{
+    display: block;
+  }
+
+  .hamburgerActive{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 1vmax;
+    top: 6vmax;
+    background-color: rgb(241, 109 , 18);
+    width: 40%;
+    height: 30vmax;
+    border-radius: 5px;
+    
+  }
+
+  .linkStyle:hover {
+  color: black;
+  text-decoration: none;
+}
+  .hamburger{
+    display: none;
+    transition: all 0.2s;
+  }
+
+}

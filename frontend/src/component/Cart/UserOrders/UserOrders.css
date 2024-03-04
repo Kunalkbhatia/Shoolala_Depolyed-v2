@@ -1,0 +1,40 @@
+.orders-container{
+    min-height: 65vh;
+}
+.fields{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: rgb(241, 109 , 18);
+}
+
+.fields > div{
+    text-align: center;
+    width: 25%;
+    font-size: 2vmax;
+    color: white;
+    font-family: "Roboto";
+}
+
+.order{
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+}
+
+.order > div{
+    overflow: hidden;
+    text-align: center;
+    width: 25%;
+    font-size: 1.5vmax;
+    font-family: "Roboto";
+    color: black;
+}
+
+.order-id{
+    padding-left: 1vmax;
+}
+

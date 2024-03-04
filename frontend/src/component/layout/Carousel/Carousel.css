@@ -1,0 +1,38 @@
+.carousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+
+.left-btn , .right-btn {
+    background-color: rgba(0, 0, 0, 0); 
+    border: none;
+    color: gray; 
+    padding: 10px 20px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3vmax;
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+}
+
+.left-btn{
+  top: 50%;
+  left: -7%;
+  transform: translateY(-50%);
+}
+.right-btn{
+    top: 50%;
+    right: -7%;
+    transform: translateY(-50%);
+}
+
+.left-btn:hover,.right-btn:hover{
+    opacity: 1;
+}
+

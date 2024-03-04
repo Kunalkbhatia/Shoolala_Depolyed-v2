@@ -1,0 +1,158 @@
+.banner {
+  background-image: url("../../images/background-logo-1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  height: 90vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: white;
+  backdrop-filter: blur(20px);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.banner > h1 {
+  margin: 2vmax;
+  font: 700 5vmax "Roboto";
+  color: white;
+}
+
+.banner > p {
+  text-transform: uppercase;
+  margin: 3vmax;
+  font: 700 5vmax "Roboto";
+  color: white;
+}
+
+.banner > a > button {
+  border-radius: 1.2vmax;
+  margin-bottom: 5vmax;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid white;
+  padding: 1vmax;
+  transition: all 0.5s;
+  width: 9vmax;
+  font: 500 1vmax "Roboto";
+}
+.banner > a > button:hover {
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+.homeHeading {
+  text-align: center;
+  font-family: Roboto;
+  font-size: 2vmax;
+  /* width: 20vmax; */
+  padding: 1vmax;
+  margin: 5vmax auto;
+  color: rgb(0, 0, 0, 0.7);
+}
+
+.container {
+  display: flex;
+  margin: 2vmax auto;
+  width: 80vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.productCard {
+  /* border: 2px solid black; */
+  width: 14.2vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+}
+
+.productCard > img {
+  width: 14.2vmax;
+  height: 73%;
+  object-fit: contain;
+}
+
+.productCard > div {
+  margin: 0.5vmax;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.productCardSpan {
+  margin: 0.5vmax;
+  font: 300 0.7vmax "Roboto";
+}
+
+.productCard > p {
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
+}
+
+.productCard > span {
+  margin: 0.5vmax;
+  color: rgb(241, 109 , 18);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1vmax;
+}
+
+.productCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+
+  transform: translateY(-1vmax);
+}
+
+
+@media screen and (max-width: 600px) {
+  .banner{
+    height: 50vmin;
+  }
+
+  .banner > p{
+    font-size: 3vmax;
+  }
+
+  .banner > h1{
+    display: none;
+  }
+
+  .banner > a > button {
+    display: none;
+  }
+
+  .homeHeading{
+    font-size: 3vmax;
+  }
+  .productCard > p {
+    font-size: 1.7vmax;
+  }
+
+  .productCard > div {
+    margin: 0vmax;
+    display: block;
+  }
+
+  .productCard > span {
+    font-size: 1.5vmax;
+  }
+
+  .productCard > div > span {
+    margin: 0 0.5vmax;
+    font: 300 1vmax "Roboto";
+  }
+
+  .container{
+    min-height: 15vh;
+  }
+}

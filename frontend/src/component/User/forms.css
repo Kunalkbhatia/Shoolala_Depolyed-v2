@@ -1,0 +1,152 @@
+.Login-container,
+.Register-container {
+  margin: 0 auto;
+  min-height: 80vh;
+}
+
+.form-heading {
+  text-align: center;
+  color: black;
+  font-size: 3vmax;
+  font-family: "Roboto";
+  padding: 3vmax 0;
+}
+
+.Login-form,
+.Register-form {
+  position: relative;
+  padding: 1vmax 2vmax;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 1vmax;
+}
+
+.email-input,
+.password-input,
+.name-input {
+  color: black;
+  border: 2px solid rgb(241, 109, 18);
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 1vmax 2vmax;
+}
+
+.password_input {
+  position: relative;
+}
+
+.password_input > .hiddenIcon {
+  display: none;
+}
+
+.visibile-icon {
+  position: absolute;
+  top: 2vmax;
+  right: 1vmax; 
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: rgb(229, 214, 214);
+}
+
+.Login-btn,
+.Register-btn {
+  background-color: white;
+  color: black;
+  position: relative;
+  padding: 1rem 2rem;
+  font-size: 1.5vmax;
+  border: 2px solid rgb(241, 109, 18);
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.Login-btn::after,
+.Register-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(241, 109, 18);
+  border: 2px solid white;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.Login-btn:hover::after,
+.Register-btn:hover::after {
+  transform: scaleX(1);
+}
+
+.profile-btn {
+  display: flex;
+  padding: 1vmax 2vmax;
+  gap: 1vmax;
+}
+
+.profile-btn > img {
+  border-radius: 50%;
+  width: 4vmax;
+  cursor: pointer;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 5vmax;
+}
+
+.profile-preview > img {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  border: 2px solid rgb(241, 109, 18);
+  object-fit: cover;
+}
+
+.profile-select {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-select > h2 {
+  color: black;
+  font-family: "Roboto";
+}
+
+.profile-select > select {
+  font-family: "Roboto";
+  padding: 0.5vmax;
+  border-radius: 5px;
+}
+
+.changeTab {
+  text-decoration: none;
+  color: black;
+  font-size: 1.6rem;
+  font-family: "Roboto";
+}
+
+@media screen and (max-width: 600px) {
+  .form-heading {
+    font-size: 4vmax;
+  }
+
+  .Login-container,
+  .Register-container {
+    min-height: 70vh;
+  }
+
+  .Login-btn,
+  .Register-btn {
+    font-size: 2.5vmax;
+  }
+}
