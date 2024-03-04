@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     const getProductsData = async () => {
-      let link = `/api/v1/products?page=${currentPage}`;
+      let link = `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/products?page=${currentPage}`;
       const { data } = await axios.get(link);
       const nextProducts = data.products;
       setHomeProducts((prev) => [...prev, ...nextProducts]);
