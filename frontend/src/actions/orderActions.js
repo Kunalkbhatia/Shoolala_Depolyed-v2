@@ -40,7 +40,7 @@ export const createOrder = (order) => async (dispatch) => {
     };
     console.log(order);
 
-    const { data } = await axios.post("/api/v1/order/new", order, config);
+    const { data } = await axios.post("https://shoolala-depolyed-v2-backend.vercel.app/api/v1/order/new", order, config);
 
     dispatch(createOrderSuccess(data));
   } catch (error) {
@@ -53,7 +53,7 @@ export const getAllOrders = () => async (dispatch) => {
   try {
     dispatch(getOrdersRequest());
 
-    const { data } = await axios.get("/api/v1/orders/me");
+    const { data } = await axios.get("https://shoolala-depolyed-v2-backend.vercel.app/api/v1/orders/me");
     dispatch(getOrdersSuccess(data));
   } catch (error) {
     const payload = error.response.data.message;
@@ -67,7 +67,7 @@ export const getOrderDetails =
     try {
       dispatch(orderDetailsRequest());
 
-      const { data } = await axios.get(`/api/v1/orders/${id}`);
+      const { data } = await axios.get(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/orders/${id}`);
 
       dispatch(orderDetailsSuccess(data.order));
     } catch (error) {
@@ -80,7 +80,7 @@ export const getAllAdminOrders = () => async (dispatch) => {
   try {
     dispatch(getAdminOrdersRequest());
 
-    const { data } = await axios.get("/api/v1/admin/orders");
+    const { data } = await axios.get("https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/orders");
     
 
     dispatch(getAdminOrdersSuccess(data.orders));
@@ -94,7 +94,7 @@ export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch(deleteOrderRequest());
 
-    const { data } = await axios.delete(`/api/v1/admin/order/${id}`);
+    const { data } = await axios.delete(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/order/${id}`);
 
     dispatch(deleteOrderSuccess(data.success));
   } catch (error) {
@@ -113,7 +113,7 @@ export const updateAdminOrder = (id, order) => async (dispatch) => {
       },
     };
     const { data } = await axios.put(
-      `/api/v1/admin/order/${id}`,
+      `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/order/${id}`,
       order,
       config
     );
