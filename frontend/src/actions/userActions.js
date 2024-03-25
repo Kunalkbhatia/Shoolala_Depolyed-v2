@@ -49,7 +49,7 @@ export const registerUser = (user) => async (dispatch) => {
 export const loadUser = () => async (dispatch) => {
   try {
     dispatch(loadRequest());
-    const { data } = await axios.get(`/api/v1/me`);
+    const { data } = await axios.get(`http://localhost:4000/api/v1/me`);
     dispatch(loadSuccess(data.user));
   } catch (error) {
     const payload = error.response.data.message;

@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     const getProductsData = async () => {
-      let link = `/api/v1/products?page=${currentPage}`;
+      let link = `http://localhost:4000/api/v1/products?page=${currentPage}`;
       const { data } = await axios.get(link);
       const nextProducts = data.products;
       setHomeProducts((prev) => [...prev, ...nextProducts]);

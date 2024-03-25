@@ -8,7 +8,7 @@ const app = express();
 const path = require("path");
 
 
-// app.use(cors());
+app.use(cors());
 app.use(cookieParser());
 app.use(fileUpload());
 app.use(express.json({
