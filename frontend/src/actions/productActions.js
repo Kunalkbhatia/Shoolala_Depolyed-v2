@@ -38,10 +38,10 @@ export const getProducts =
   async (dispatch) => {
     try {
       dispatch(allProductRequest());
-      let link = `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
       if (category) {
-        link = `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
       }
       const { data } = await axios.get(link);
       
@@ -64,7 +64,7 @@ export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch(allAdminProductRequest());
 
-    const { data } = await axios.get(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/products`);
+    const { data } = await axios.get(`/api/v1/admin/products`);
     dispatch(allAdminProductSucces(data));
   } catch (error) {
     const payload = error.response.data.message;
@@ -81,7 +81,7 @@ export const createNewProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/product/new`,
+      `/api/v1/admin/product/new`,
       productData,
       config
     );
@@ -98,7 +98,7 @@ export const getProductDetails =
   async (dispatch) => {
     try {
       dispatch(productDetailsRequest());
-      const { data } = await axios.get(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/product/${id}`);
+      const { data } = await axios.get(`/api/v1/product/${id}`);
       dispatch(productDetailsSuccess(data.product));
     } catch (error) {
       const payload = error.response.data.message;
@@ -110,7 +110,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch(deleteProductRequest());
 
-    const { data } = await axios.delete(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/product/${id}`);
+    const { data } = await axios.delete(`/api/v1/admin/product/${id}`);
 
     dispatch(deleteProductSuccess(data.success));
   } catch (error) {
@@ -128,7 +128,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/product/${id}`,
+      `/api/v1/admin/product/${id}`,
       productData,
       config
     );
@@ -148,7 +148,7 @@ export const newReview = (reviewData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/review`, reviewData, config);
+    const { data } = await axios.put(`/api/v1/review`, reviewData, config);
 
     dispatch(createReviewSuccess(data.success));
   } catch (error) {

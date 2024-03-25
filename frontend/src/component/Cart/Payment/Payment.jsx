@@ -60,7 +60,7 @@ const Payment = () => {
         },
       };
       const { data } = await axios.post(
-        "https://shoolala-depolyed-v2-backend.vercel.app/api/v1/payment/process",
+        "/api/v1/payment/process",
         paymentData,
         config
       );
