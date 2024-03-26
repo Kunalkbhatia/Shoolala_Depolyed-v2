@@ -32,16 +32,18 @@ import {
   createReviewRequest,
   createReviewSuccess,
 } from "../reducers/Product Slice/createReviewSlice";
+const prefixURL = "https://shoolala-depolyed-v2-backend.vercel.app"
+
 
 export const getProducts =
   (keyword = "", currentPage = 1, price = [0, 100000], category, ratings = 0) =>
   async (dispatch) => {
     try {
       dispatch(allProductRequest());
-      let link = `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      let link = `${prefixURL}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
       if (category) {
-        link = `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+        link = `${prefixURL}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
       }
       const { data } = await axios.get(link);
       
@@ -64,7 +66,12 @@ export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch(allAdminProductRequest());
 
-    const { data } = await axios.get(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/products`);
+    const { data } = await axios.get(`${prefixURL}/api/v1/admin/products`,{
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      }
+    });
     dispatch(allAdminProductSucces(data));
   } catch (error) {
     const payload = error.response.data.message;
@@ -77,11 +84,14 @@ export const createNewProduct = (productData) => async (dispatch) => {
     dispatch(createProductRequest());
 
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      },
     };
 
     const { data } = await axios.post(
-      `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/product/new`,
+      `${prefixURL}/api/v1/admin/product/new`,
       productData,
       config
     );
@@ -98,7 +108,7 @@ export const getProductDetails =
   async (dispatch) => {
     try {
       dispatch(productDetailsRequest());
-      const { data } = await axios.get(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/product/${id}`);
+      const { data } = await axios.get(`${prefixURL}/api/v1/product/${id}`);
       dispatch(productDetailsSuccess(data.product));
     } catch (error) {
       const payload = error.response.data.message;
@@ -110,7 +120,12 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch(deleteProductRequest());
 
-    const { data } = await axios.delete(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/product/${id}`);
+    const { data } = await axios.delete(`${prefixURL}/api/v1/admin/product/${id}`,{
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      }
+    });
 
     dispatch(deleteProductSuccess(data.success));
   } catch (error) {
@@ -124,11 +139,14 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     dispatch(updateProductRequest());
 
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      },
     };
 
     const { data } = await axios.put(
-      `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/product/${id}`,
+      `${prefixURL}/api/v1/admin/product/${id}`,
       productData,
       config
     );
@@ -145,10 +163,13 @@ export const newReview = (reviewData) => async (dispatch) => {
     dispatch(createReviewRequest());
 
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      },
     };
 
-    const { data } = await axios.put(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/review`, reviewData, config);
+    const { data } = await axios.put(`${prefixURL}/api/v1/review`, reviewData, config);
 
     dispatch(createReviewSuccess(data.success));
   } catch (error) {

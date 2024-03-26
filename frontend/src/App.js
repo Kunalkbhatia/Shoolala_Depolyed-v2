@@ -41,7 +41,13 @@ function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   async function getStripeApiKey() {
-    const { data } = await axios.get("https://shoolala-depolyed-v2-backend.vercel.app/api/v1/stripeapikey");
+    const prefixURL = "https://shoolala-depolyed-v2-backend.vercel.app"
+    const { data } = await axios.get(`${prefixURL}/api/v1/stripeapikey`,{
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      }
+    });
     setStripeApiKey(data.stripeApiKey);
   }
   useEffect(() => {

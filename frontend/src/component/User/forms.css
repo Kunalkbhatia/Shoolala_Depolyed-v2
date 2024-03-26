@@ -43,7 +43,7 @@
 
 .visibile-icon {
   position: absolute;
-  top: 2vmax;
+  top: 50%;
   right: 1vmax; 
   transform: translateY(-50%);
   cursor: pointer;

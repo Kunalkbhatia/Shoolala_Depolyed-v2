@@ -59,8 +59,9 @@ const Payment = () => {
           "Content-Type": "application/json",
         },
       };
+      const prefixURL = "https://shoolala-depolyed-v2-backend.vercel.app"
       const { data } = await axios.post(
-        "https://shoolala-depolyed-v2-backend.vercel.app/api/v1/payment/process",
+        `${prefixURL}/api/v1/payment/process`,
         paymentData,
         config
       );
@@ -127,7 +128,7 @@ const Payment = () => {
           <Typography>Card Info</Typography>
           <div>
             <CreditCardIcon />
-            <CardNumberElement className="paymentInput" />
+            <CardNumberElement className="paymentInput"/>
           </div>
           <div>
             <EventIcon />

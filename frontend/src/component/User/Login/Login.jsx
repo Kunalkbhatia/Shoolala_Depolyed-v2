@@ -13,7 +13,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import { clearUserErrors } from "../../../reducers/User Slice/UserSlice";
 const Login = () => {
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ email: "testing@gmail.com", password: "Password" });
   const [visible, setVisible] = useState(false);
 
   const dispatch = useDispatch();
@@ -30,17 +30,9 @@ const Login = () => {
       dispatch(clearUserErrors());
     }
     if (isAuthenticated) {
-      if (redirect === "account") toast.success("Logged In");
       navigate(`/${redirect}`);
-    } else {
-      toast(
-        "you can use the credentials to use the admin feature. Please Don't tamper the data with bad intentions ",
-        { duration: 6000 }
-      );
-      toast("email: testing@gmail.com , password: Password  ", {
-        duration: 7000,
-      });
-    }
+      
+    } 
   }, [dispatch, redirect, isAuthenticated, navigate, error]);
 
   const changeHandler = (event) => {

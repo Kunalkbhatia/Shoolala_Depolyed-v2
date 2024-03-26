@@ -29,18 +29,20 @@ import {
   updateOrderRequest,
   updateOrderSuccess,
 } from "../reducers/Order Slice/updateOrderSlice";
+const prefixURL = "https://shoolala-depolyed-v2-backend.vercel.app0"
 
 export const createOrder = (order) => async (dispatch) => {
   try {
     dispatch(createOrderRequest());
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
       },
     };
     console.log(order);
 
-    const { data } = await axios.post("https://shoolala-depolyed-v2-backend.vercel.app/api/v1/order/new", order, config);
+    const { data } = await axios.post(`${prefixURL}/api/v1/order/new`, order, config);
 
     dispatch(createOrderSuccess(data));
   } catch (error) {
@@ -53,7 +55,12 @@ export const getAllOrders = () => async (dispatch) => {
   try {
     dispatch(getOrdersRequest());
 
-    const { data } = await axios.get("https://shoolala-depolyed-v2-backend.vercel.app/api/v1/orders/me");
+    const { data } = await axios.get(`${prefixURL}/api/v1/orders/me`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      }
+    });
     dispatch(getOrdersSuccess(data));
   } catch (error) {
     const payload = error.response.data.message;
@@ -67,7 +74,12 @@ export const getOrderDetails =
     try {
       dispatch(orderDetailsRequest());
 
-      const { data } = await axios.get(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/orders/${id}`);
+      const { data } = await axios.get(`${prefixURL}/api/v1/orders/${id}`,{
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+          'Content-Type': 'application/json',
+        }
+      });
 
       dispatch(orderDetailsSuccess(data.order));
     } catch (error) {
@@ -80,7 +92,12 @@ export const getAllAdminOrders = () => async (dispatch) => {
   try {
     dispatch(getAdminOrdersRequest());
 
-    const { data } = await axios.get("https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/orders");
+    const { data } = await axios.get(`${prefixURL}/api/v1/admin/orders`,{
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      }
+    });
     
 
     dispatch(getAdminOrdersSuccess(data.orders));
@@ -94,7 +111,12 @@ export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch(deleteOrderRequest());
 
-    const { data } = await axios.delete(`https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/order/${id}`);
+    const { data } = await axios.delete(`${prefixURL}/api/v1/admin/order/${id}`,{
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      },
+    });
 
     dispatch(deleteOrderSuccess(data.success));
   } catch (error) {
@@ -109,11 +131,12 @@ export const updateAdminOrder = (id, order) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
       },
     };
     const { data } = await axios.put(
-      `https://shoolala-depolyed-v2-backend.vercel.app/api/v1/admin/order/${id}`,
+      `${prefixURL}/api/v1/admin/order/${id}`,
       order,
       config
     );
