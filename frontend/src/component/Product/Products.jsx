@@ -41,7 +41,18 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts(keyword,currentPage, price, category,ratings));
-  }, [dispatch, keyword, price, category,currentPage,ratings]);
+  }, [dispatch, keyword, category,currentPage]);
+  
+  // slider optimized
+  useEffect(() => {
+    const timer = setTimeout(()=>{
+      dispatch(getProducts(keyword,currentPage, price, category,ratings));
+    },1000);
+
+    return () => {
+      clearTimeout(timer);
+    }
+  },[dispatch,price,ratings])
 
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
